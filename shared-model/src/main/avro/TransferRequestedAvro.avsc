@@ -1,0 +1,36 @@
+{
+  "type": "record",
+  "name": "TransferRequestedAvro",
+  "namespace": "com.example.bank.events.avro",
+  "doc": "A debit/credit request published by producer-service.",
+  "fields": [
+    {
+      "name": "transferId",
+      "type": "string",
+      "doc": "Globally unique idempotency key for a transfer."
+    },
+    {
+      "name": "debitAccountId",
+      "type": "long"
+    },
+    {
+      "name": "creditAccountId",
+      "type": "long"
+    },
+    {
+      "name": "amount",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 19,
+        "scale": 2
+      },
+      "doc": "Positive currency amount with two decimal places."
+    },
+    {
+      "name": "requestedAtEpochMillis",
+      "type": "long",
+      "doc": "UTC event creation time in epoch milliseconds."
+    }
+  ]
+}
